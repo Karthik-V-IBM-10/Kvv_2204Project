@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rest-connector xmlns="http://www.webmethods.com/cloudstreams/metadata/handler/model" id="project.kvv_2204.Kvv_2204Project.karthik" version="1.0" name="karthik" displayName="karthik">
+    <description>open API File Upload</description>
+    <connections>
+        <connection type="sagcloud" name="karthikconnection" displayName="karthikconnection">
+            <groups>
+                <group type="connection" name="connection" displayName="Connection">
+                    <description>Define the required connection configurations to initiate communication with the SaaS provider.</description>
+                    <fields>
+                        <field isRequired="false" isEncrypted="false" isHidden="false" isArray="false" defaultValue="https://awsusdadarnd.int-aws-us.webmethods.io/integration/restv2/development/fla83b78f5a9c79e7b259715/complexRESTAPI" name="cn.providerUrl" displayName="Server URL">
+                            <description>The native provider endpoint target for the connection configuration</description>
+                        </field>
+                    </fields>
+                </group>
+                <group type="credentials" name="credentials" displayName="Credentials">
+                    <fields/>
+                </group>
+            </groups>
+        </connection>
+    </connections>
+    <services>
+        <service xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="RESTServiceType" endpoint="${cn.providerUrl}" name="karthikservice" displayName="karthikservice">
+            <documentModel packageName="." nsName="project.kvv_2204.Kvv_2204Project.karthik.karthikservice.doctypes" useInlineModel="false"/>
+            <resources>
+                <resource method="GET" path="/transformPipelineAllAssets" type="SIMPLE" tag="transformPipelineAllAssetsGET1" name="transformPipelineAllAssetsGET1" displayName="transformPipelineAllAssetsGET1">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/octet-stream</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/octet-stream</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                    </mappings>
+                    <parameters/>
+                    <responses>
+                        <response name="stream" code="200,401" messageFormatterType="vnd.sag.cloudstreams+binary" builderType="vnd.sag.cloudstreams+binary" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="POST" path="/sftpV2" type="SIMPLE" tag="sftpV2POST4" name="sftpV2POST4" displayName="sftpV2POST4">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/octet-stream</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/octet-stream</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                    </mappings>
+                    <parameters/>
+                    <responses>
+                        <response name="stream" code="200,401" messageFormatterType="vnd.sag.cloudstreams+binary" builderType="vnd.sag.cloudstreams+binary" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="POST" path="/complexFlow" type="SIMPLE" tag="complexFlowPOST6" name="complexFlowPOST6" displayName="complexFlowPOST6">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                    </mappings>
+                    <parameters/>
+                    <request name="complexFlowPOST6Request" messageFormatterType="application/json" builderType="application/octet+idataoref" documentRef="project.kvv_2204.Kvv_2204Project.karthik.karthikservice.doctypes:TestDoc" excludeRoot="true" dimension="0"/>
+                    <responses>
+                        <response name="post200complexFlowPOST6Response" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.karthik.karthikservice.doctypes:complexFlowPOSTresponse" excludeRoot="true" dimension="0"/>
+                        <response name="stream" code="401" messageFormatterType="vnd.sag.cloudstreams+binary" builderType="vnd.sag.cloudstreams+binary" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="GET" path="/automatePurchaseOrder" type="SIMPLE" tag="automatePurchaseOrderGET2" name="automatePurchaseOrderGET2" displayName="automatePurchaseOrderGET2">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                    </mappings>
+                    <parameters/>
+                    <responses>
+                        <response name="get200automatePurchaseOrderGET2Response" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.karthik.karthikservice.doctypes:automatePurchaseOrderGETresponse" excludeRoot="true" dimension="0"/>
+                        <response name="stream" code="401" messageFormatterType="vnd.sag.cloudstreams+binary" builderType="vnd.sag.cloudstreams+binary" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="GET" path="/addInts" type="SIMPLE" tag="addIntsGET7" name="addIntsGET7" displayName="addIntsGET7">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                    </mappings>
+                    <parameters>
+                        <parameter name="num1" isRequired="true" style="QUERYSTRING_PARAM" dataType="string"/>
+                        <parameter name="num2" isRequired="true" style="QUERYSTRING_PARAM" dataType="string"/>
+                    </parameters>
+                    <responses>
+                        <response name="get200addIntsGET7Response" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.karthik.karthikservice.doctypes:addIntsGETresponse" excludeRoot="true" dimension="0"/>
+                        <response name="stream" code="401" messageFormatterType="vnd.sag.cloudstreams+binary" builderType="vnd.sag.cloudstreams+binary" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="POST" path="/salesforceBulkDataLoader" type="SIMPLE" tag="salesforceBulkDataLoaderPOST3" name="salesforceBulkDataLoaderPOST3" displayName="salesforceBulkDataLoaderPOST3">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/octet-stream</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/octet-stream</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                    </mappings>
+                    <parameters/>
+                    <responses>
+                        <response name="stream" code="200,401" messageFormatterType="vnd.sag.cloudstreams+binary" builderType="vnd.sag.cloudstreams+binary" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="POST" path="/recievedInvoice" type="SIMPLE" tag="recievedInvoicePOST5" name="recievedInvoicePOST5" displayName="recievedInvoicePOST5">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                    </mappings>
+                    <parameters/>
+                    <responses>
+                        <response name="post200recievedInvoicePOST5Response" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.karthik.karthikservice.doctypes:recievedInvoicePOSTresponse" excludeRoot="true" dimension="0"/>
+                        <response name="stream" code="401" messageFormatterType="vnd.sag.cloudstreams+binary" builderType="vnd.sag.cloudstreams+binary" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+            </resources>
+        </service>
+    </services>
+</rest-connector>
