@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rest-connector xmlns="http://www.webmethods.com/cloudstreams/metadata/handler/model" id="project.kvv_2204.Kvv_2204Project.swaggerURL" version="1.0" name="swaggerURL" displayName="swaggerURL">
+    <description>Swagger URL</description>
+    <connections>
+        <connection type="sagcloud" name="swaggerURLconnection" displayName="swaggerURLconnection">
+            <groups>
+                <group type="connection" name="connection" displayName="Connection">
+                    <description>Define the required connection configurations to initiate communication with the SaaS provider.</description>
+                    <fields>
+                        <field isRequired="false" isEncrypted="false" isHidden="false" isArray="false" defaultValue="https://petstore.swagger.io/v2" name="cn.providerUrl" displayName="Server URL">
+                            <description>The native provider endpoint target for the connection configuration</description>
+                        </field>
+                    </fields>
+                </group>
+                <group type="credentials" name="credentials" displayName="Credentials">
+                    <fields/>
+                </group>
+            </groups>
+        </connection>
+    </connections>
+    <services>
+        <service xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="RESTServiceType" endpoint="${cn.providerUrl}" name="swaggerurlservice" displayName="swaggerurlservice">
+            <documentModel packageName="." nsName="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes" useInlineModel="false"/>
+            <resources>
+                <resource method="POST" path="/user/createWithArray" type="SIMPLE" tag="user" name="createUsersWithArrayInput" displayName="Creates list of users with given input array">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                    </mappings>
+                    <parameters/>
+                    <request name="body" messageFormatterType="application/json" builderType="application/octet+idataoref" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:User" excludeRoot="true" dimension="1"/>
+                    <responses>
+                        <response name="postdefaultcreateUsersWithArrayInputResponse" code="100-599" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:csEmptyDoc" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="GET" path="/pet/findByTags" type="SIMPLE" isHidden="true" tag="pet" name="findPetsByTags" displayName="Finds Pets by tags">
+                    <description>Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.</description>
+                    <mappings>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                    </mappings>
+                    <parameters>
+                        <parameter name="tags" isRequired="true" style="QUERYSTRING_PARAM">
+                            <description>Tags to filter by</description>
+                        </parameter>
+                    </parameters>
+                    <responses>
+                        <response name="get200findPetsByTagsResponse" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:Pet" excludeRoot="true" dimension="1"/>
+                        <response name="get400findPetsByTagsResponse" code="400" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:csEmptyDoc" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="POST" path="/store/order" type="SIMPLE" tag="store" name="placeOrder" displayName="Place an order for a pet">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                    </mappings>
+                    <parameters/>
+                    <request name="body" messageFormatterType="application/json" builderType="application/octet+idataoref" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:Order" excludeRoot="true" dimension="0"/>
+                    <responses>
+                        <response name="post200placeOrderResponse" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:Order" excludeRoot="true" dimension="0"/>
+                        <response name="post400placeOrderResponse" code="400" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:csEmptyDoc" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="GET" path="/store/order/{orderId}" type="SIMPLE" tag="store" name="getOrderById" displayName="Find purchase order by ID">
+                    <description>For valid response try integer IDs with value &gt;= 1 and &lt;= 10. Other values will generated exceptions</description>
+                    <mappings>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                    </mappings>
+                    <parameters>
+                        <parameter name="orderId" isRequired="true" style="URI_CONTEXT">
+                            <description>ID of pet that needs to be fetched</description>
+                        </parameter>
+                    </parameters>
+                    <responses>
+                        <response name="get200getOrderByIdResponse" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:Order" excludeRoot="true" dimension="0"/>
+                        <response name="get400getOrderByIdResponse" code="400,404" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:csEmptyDoc" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="PUT" path="/pet" type="SIMPLE" tag="pet" name="updatePet" displayName="Update an existing pet">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                    </mappings>
+                    <parameters/>
+                    <request name="body" messageFormatterType="application/json" builderType="application/octet+idataoref" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:Pet" excludeRoot="true" dimension="0"/>
+                    <responses>
+                        <response name="put400updatePetResponse" code="400,404,405" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:csEmptyDoc" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="PUT" path="/user/{username}" type="SIMPLE" tag="user" name="updateUser" displayName="Updated user">
+                    <description>This can only be done by the logged in user.</description>
+                    <mappings>
+                        <map isRequired="true" context="IN" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                    </mappings>
+                    <parameters>
+                        <parameter name="username" isRequired="true" style="URI_CONTEXT">
+                            <description>name that need to be updated</description>
+                        </parameter>
+                    </parameters>
+                    <request name="body" messageFormatterType="application/json" builderType="application/octet+idataoref" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:User" excludeRoot="true" dimension="0"/>
+                    <responses>
+                        <response name="put400updateUserResponse" code="400,404" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:csEmptyDoc" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="DELETE" path="/pet/{petId}" type="SIMPLE" tag="pet" name="deletePet" displayName="Deletes a pet">
+                    <mappings>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                        <map context="IN" name="apiKeyHeader" displayName="api_key">
+                            <source type="LITERAL"/>
+                            <target type="HEADER">api_key</target>
+                        </map>
+                    </mappings>
+                    <parameters>
+                        <parameter name="petId" isRequired="true" style="URI_CONTEXT">
+                            <description>Pet id to delete</description>
+                        </parameter>
+                    </parameters>
+                    <responses>
+                        <response name="delete400deletePetResponse" code="400,404" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:csEmptyDoc" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="POST" path="/pet" type="SIMPLE" tag="pet" name="addPet" displayName="Add a new pet to the store">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                    </mappings>
+                    <parameters/>
+                    <request name="body" messageFormatterType="application/json" builderType="application/octet+idataoref" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:Pet" excludeRoot="true" dimension="0"/>
+                    <responses>
+                        <response name="post405addPetResponse" code="405" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:csEmptyDoc" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="POST" path="/user/createWithList" type="SIMPLE" tag="user" name="createUsersWithListInput" displayName="Creates list of users with given input array">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                    </mappings>
+                    <parameters/>
+                    <request name="body" messageFormatterType="application/json" builderType="application/octet+idataoref" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:User" excludeRoot="true" dimension="1"/>
+                    <responses>
+                        <response name="postdefaultcreateUsersWithListInputResponse" code="100-599" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:csEmptyDoc" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="GET" path="/user/login" type="SIMPLE" tag="user" name="loginUser" displayName="Logs user into the system">
+                    <mappings>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                        <map context="OUT" name="xExpiresAfterHeader" displayName="X-Expires-After">
+                            <source type="LITERAL"/>
+                            <target type="HEADER">X-Expires-After</target>
+                        </map>
+                        <map context="OUT" name="xRateLimitHeader" displayName="X-Rate-Limit">
+                            <source type="LITERAL"/>
+                            <target type="HEADER">X-Rate-Limit</target>
+                        </map>
+                    </mappings>
+                    <parameters>
+                        <parameter name="username" isRequired="true" style="QUERYSTRING_PARAM">
+                            <description>The user name for login</description>
+                        </parameter>
+                        <parameter name="password" isRequired="true" style="QUERYSTRING_PARAM">
+                            <description>The password for login in clear text</description>
+                        </parameter>
+                    </parameters>
+                    <responses>
+                        <response name="get200loginUserResponse" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:get200loginUserResponseDoc" excludeRoot="true" dimension="0"/>
+                        <response name="get400loginUserResponse" code="400" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:csEmptyDoc" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="GET" path="/user/logout" type="SIMPLE" tag="user" name="logoutUser" displayName="Logs out current logged in user session">
+                    <mappings>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                    </mappings>
+                    <parameters/>
+                    <responses>
+                        <response name="getdefaultlogoutUserResponse" code="100-599" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:csEmptyDoc" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="GET" path="/pet/{petId}" type="SIMPLE" tag="pet" name="getPetById" displayName="Find pet by ID">
+                    <description>Returns a single pet</description>
+                    <mappings>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                    </mappings>
+                    <parameters>
+                        <parameter name="petId" isRequired="true" style="URI_CONTEXT">
+                            <description>ID of pet to return</description>
+                        </parameter>
+                    </parameters>
+                    <responses>
+                        <response name="get200getPetByIdResponse" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:Pet" excludeRoot="true" dimension="0"/>
+                        <response name="get400getPetByIdResponse" code="400,404" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:csEmptyDoc" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="DELETE" path="/user/{username}" type="SIMPLE" tag="user" name="deleteUser" displayName="Delete user">
+                    <description>This can only be done by the logged in user.</description>
+                    <mappings>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                    </mappings>
+                    <parameters>
+                        <parameter name="username" isRequired="true" style="URI_CONTEXT">
+                            <description>The name that needs to be deleted</description>
+                        </parameter>
+                    </parameters>
+                    <responses>
+                        <response name="delete400deleteUserResponse" code="400,404" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:csEmptyDoc" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="GET" path="/user/{username}" type="SIMPLE" tag="user" name="getUserByName" displayName="Get user by user name">
+                    <mappings>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                    </mappings>
+                    <parameters>
+                        <parameter name="username" isRequired="true" style="URI_CONTEXT">
+                            <description>The name that needs to be fetched. Use user1 for testing. </description>
+                        </parameter>
+                    </parameters>
+                    <responses>
+                        <response name="get200getUserByNameResponse" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:User" excludeRoot="true" dimension="0"/>
+                        <response name="get400getUserByNameResponse" code="400,404" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:csEmptyDoc" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="POST" path="/user" type="SIMPLE" tag="user" name="createUser" displayName="Create user">
+                    <description>This can only be done by the logged in user.</description>
+                    <mappings>
+                        <map isRequired="true" context="IN" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                    </mappings>
+                    <parameters/>
+                    <request name="body" messageFormatterType="application/json" builderType="application/octet+idataoref" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:User" excludeRoot="true" dimension="0"/>
+                    <responses>
+                        <response name="postdefaultcreateUserResponse" code="100-599" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:csEmptyDoc" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="GET" path="/pet/findByStatus" type="SIMPLE" tag="pet" name="findPetsByStatus" displayName="Finds Pets by status">
+                    <description>Multiple status values can be provided with comma separated strings</description>
+                    <mappings>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                    </mappings>
+                    <parameters>
+                        <parameter name="status" isRequired="true" style="QUERYSTRING_PARAM" defaultValue="available">
+                            <description>Status values that need to be considered for filter</description>
+                        </parameter>
+                    </parameters>
+                    <responses>
+                        <response name="get200findPetsByStatusResponse" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:Pet" excludeRoot="true" dimension="1"/>
+                        <response name="get400findPetsByStatusResponse" code="400" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:csEmptyDoc" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="GET" path="/store/inventory" type="SIMPLE" tag="store" name="getInventory" displayName="Returns pet inventories by status">
+                    <description>Returns a map of status codes to quantities</description>
+                    <mappings>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                    </mappings>
+                    <parameters/>
+                    <responses>
+                        <response name="get200getInventoryResponse" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:get200getInventoryResponseDoc" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="DELETE" path="/store/order/{orderId}" type="SIMPLE" tag="store" name="deleteOrder" displayName="Delete purchase order by ID">
+                    <description>For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors</description>
+                    <mappings>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                    </mappings>
+                    <parameters>
+                        <parameter name="orderId" isRequired="true" style="URI_CONTEXT">
+                            <description>ID of the order that needs to be deleted</description>
+                        </parameter>
+                    </parameters>
+                    <responses>
+                        <response name="delete400deleteOrderResponse" code="400,404" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:csEmptyDoc" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="POST" path="/pet/{petId}" type="SIMPLE" tag="pet" name="updatePetWithForm" displayName="Updates a pet in the store with form data">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/x-www-form-urlencoded</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="OUT" name="contentTypeHeader" displayName="Content-Type">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Content-Type</target>
+                        </map>
+                        <map isRequired="true" context="IN" name="acceptHeader" displayName="Accept">
+                            <source type="LITERAL">application/json</source>
+                            <target type="HEADER">Accept</target>
+                        </map>
+                    </mappings>
+                    <parameters>
+                        <parameter name="petId" isRequired="true" style="URI_CONTEXT">
+                            <description>ID of pet that needs to be updated</description>
+                        </parameter>
+                        <parameter name="name" style="FORM_ENCODED_PARAM"/>
+                        <parameter name="status" style="FORM_ENCODED_PARAM"/>
+                    </parameters>
+                    <responses>
+                        <response name="post405updatePetWithFormResponse" code="405" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:csEmptyDoc" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+            </resources>
+        </service>
+    </services>
+</rest-connector>

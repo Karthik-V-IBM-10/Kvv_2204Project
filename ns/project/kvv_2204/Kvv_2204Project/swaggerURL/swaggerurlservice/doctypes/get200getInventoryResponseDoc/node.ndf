@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <record name="record" javaclass="com.wm.util.Values">
+    <value name="node_nsName">project.kvv_2204.Kvv_2204Project.swaggerURL.swaggerurlservice.doctypes:get200getInventoryResponseDoc</value>
+    <value name="node_pkg">Kvv_2204Project</value>
+    <value name="node_type">record</value>
+    <value name="field_type">record</value>
+  </record>
+</Values>

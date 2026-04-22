@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Connector-Key: project.kvv_2204.Kvv_2204Project.swaggerURL
+Connector-Name: swaggerURL
+Connector-Version: 1.0
+Connector-Handler: com.webmethods.cloudstreams.metadata.handler.rest.Res
+ tConnectorMetadataHandler
+Connector-State: Enabled
+Connector-Bundle-Vendor: IBM
+Connector-Bundle-Version: 1.0
+Connector-Group-ID: project.kvv_2204.Kvv
+Connector-Group-Version: 204Project.swaggerURL
+Project: 
+
+Name: User-Defined
+Application-Version: 2.0
+applicationImageID: 
+
